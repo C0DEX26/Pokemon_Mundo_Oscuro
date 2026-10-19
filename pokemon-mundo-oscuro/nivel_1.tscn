@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://6l1xl4k4b5lh"]
+
+[ext_resource type="Script" uid="uid://d3oxfjrcrhahe" path="res://nivel_1.gd" id="1_2lask"]
+[ext_resource type="PackedScene" uid="uid://bu5iyxyrfnatu" path="res://Personaje/jugador.tscn" id="2_2lask"]
+[ext_resource type="Texture2D" uid="uid://bhyem6g0rnedj" path="res://Escenario/9x242nbpj19f1.png" id="4_m2gv8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paa24"]
+size = Vector2(50, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5cwap"]
+size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7vrp"]
+size = Vector2(284, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_amset"]
+size = Vector2(32, 115)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0evr7"]
+size = Vector2(37, 114.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vilub"]
+size = Vector2(196, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pscol"]
+size = Vector2(197, 118)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgoks"]
+size = Vector2(278, 81)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nxgd"]
+size = Vector2(6, 329)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mh086"]
+size = Vector2(12, 329)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfcvj"]
+size = Vector2(300, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lx444"]
+size = Vector2(308, 30)
+
+[node name="NIVEL_1" type="Node2D" unique_id=1423636199]
+script = ExtResource("1_2lask")
+
+[node name="Jugador" parent="." unique_id=789816795 instance=ExtResource("2_2lask")]
+position = Vector2(593, 563)
+
+[node name="ZonaPuerta" type="Area2D" parent="." unique_id=1243780089]
+position = Vector2(20, 231)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaPuerta" unique_id=575855231]
+position = Vector2(571, 365)
+shape = SubResource("RectangleShape2D_paa24")
+
+[node name="FondoHabitacion" type="Sprite2D" parent="." unique_id=2117374402]
+
+[node name="9x242Nbpj19f1" type="Sprite2D" parent="." unique_id=914894249]
+z_index = -1
+position = Vector2(589, 361)
+texture = ExtResource("4_m2gv8")
+
+[node name="ColisionesHabitacion" type="StaticBody2D" parent="." unique_id=1231634343]
+
+[node name="ColisionCama" type="CollisionShape2D" parent="ColisionesHabitacion" unique_id=300009814]
+position = Vector2(590, 281)
+shape = SubResource("RectangleShape2D_5cwap")
+
+[node name="ParedSuperior" type="StaticBody2D" parent="ColisionesHabitacion" unique_id=579853316]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColisionesHabitacion/ParedSuperior" unique_id=271540784]
+position = Vector2(589, 164)
+shape = SubResource("RectangleShape2D_f7vrp")
+
+[node name="ParedIzquierda" type="StaticBody2D" parent="ColisionesHabitacion" unique_id=1999910315]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColisionesHabitacion/ParedIzquierda" unique_id=767626684]
+position = Vector2(430, 184.5)
+shape = SubResource("RectangleShape2D_amset")
+
+[node name="ParedDerecha" type="StaticBody2D" parent="ColisionesHabitacion" unique_id=2116691996]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColisionesHabitacion/ParedDerecha" unique_id=1004561463]
+position = Vector2(749.5, 184.75)
+shape = SubResource("RectangleShape2D_0evr7")
+
+[node name="ParedInferiorIzq" type="StaticBody2D" parent="ColisionesHabitacion" unique_id=1027241239]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColisionesHabitacion/ParedInferiorIzq" unique_id=552778493]
+position = Vector2(349, 302.5)
+shape = SubResource("RectangleShape2D_vilub")
+
+[node name="ParedInferiorDer" type="StaticBody2D" parent="ColisionesHabitacion" unique_id=460702341]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColisionesHabitacion/ParedInferiorDer" unique_id=868874459]
+position = Vector2(831.5, 301)
+shape = SubResource("RectangleShape2D_pscol")
+
+[node name="paredCocina" type="StaticBody2D" parent="ColisionesHabitacion" unique_id=67654912]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColisionesHabitacion/paredCocina" unique_id=928480281]
+position = Vector2(791, 441.5)
+shape = SubResource("RectangleShape2D_jgoks")
+
+[node name="BordeDer" type="StaticBody2D" parent="ColisionesHabitacion" unique_id=1017807308]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColisionesHabitacion/BordeDer" unique_id=2034885010]
+position = Vector2(253, 409)
+shape = SubResource("RectangleShape2D_3nxgd")
+
+[node name="BordeIzq" type="StaticBody2D" parent="ColisionesHabitacion" unique_id=357262887]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColisionesHabitacion/BordeIzq" unique_id=1985890749]
+position = Vector2(927, 411.5)
+shape = SubResource("RectangleShape2D_mh086")
+
+[node name="BordeInferiorDer" type="StaticBody2D" parent="ColisionesHabitacion" unique_id=35649582]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColisionesHabitacion/BordeInferiorDer" unique_id=1527278837]
+position = Vector2(405, 591.5)
+shape = SubResource("RectangleShape2D_qfcvj")
+
+[node name="BordeInferiorIzq" type="StaticBody2D" parent="ColisionesHabitacion" unique_id=1436109461]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColisionesHabitacion/BordeInferiorIzq" unique_id=313342511]
+position = Vector2(777, 591)
+shape = SubResource("RectangleShape2D_lx444")
+
+[connection signal="body_entered" from="ZonaPuerta" to="." method="_on_zona_puerta_body_entered"]

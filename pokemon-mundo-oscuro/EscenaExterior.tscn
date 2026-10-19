@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://clo3eqikfaguy"]
+
+[ext_resource type="Script" uid="uid://dnkiukf52xos" path="res://escena_exterior.gd" id="1_8ahf5"]
+[ext_resource type="Texture2D" uid="uid://dxfhxn0d3xtx4" path="res://Escenario/descarga (1).jpg.jpeg" id="1_ydkxs"]
+[ext_resource type="PackedScene" uid="uid://bu5iyxyrfnatu" path="res://Personaje/jugador.tscn" id="2_p55p8"]
+[ext_resource type="Shader" uid="uid://c4ybywjakk3gb" path="res://cascada_agua.gdshader" id="4_bgxm4"]
+[ext_resource type="Texture2D" uid="uid://d2dgyw1aajdck" path="res://Escenario/descarga (1).jpg" id="5_u6ibv"]
+[ext_resource type="Shader" uid="uid://c7yaaor2guh70" path="res://agualago.gdshader" id="6_u6ibv"]
+[ext_resource type="Texture2D" uid="uid://de7p6lyucx14l" path="res://Escenario/lago_solo_x3.png" id="7_rb4qe"]
+[ext_resource type="Script" uid="uid://ck5221ihsmkwb" path="res://pokemon_guardian.gd" id="8_0gfcp"]
+[ext_resource type="Texture2D" uid="uid://cto73wyjkndb1" path="res://Personaje/arcanine_shiny_frente.png" id="8_vartt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_paa24"]
+size = Vector2(31, 14)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_paa24"]
+shader = ExtResource("4_bgxm4")
+shader_parameter/velocidad = 0.350000016625
+shader_parameter/espuma_intensidad = 0.850000040375
+shader_parameter/espuma_altura = 0.27000001142797
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb4qe"]
+atlas = ExtResource("5_u6ibv")
+region = Rect2(0, 0, 63, 171)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_paa24"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb4qe")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bgxm4"]
+shader = ExtResource("6_u6ibv")
+shader_parameter/velocidad = 0.15
+shader_parameter/intensidad_ondas = 0.003
+shader_parameter/brillo = 0.08
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5cwap"]
+size = Vector2(4.6000004, 1.2166668)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gfcp"]
+atlas = ExtResource("8_vartt")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rb4qe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gfcp")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwtho"]
+size = Vector2(28, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_paa24"]
+radius = 100.0
+
+[node name="ExteriorCasa" type="Node2D" unique_id=1386360561]
+position = Vector2(-27, -11)
+script = ExtResource("1_8ahf5")
+metadata/_edit_group_ = true
+
+[node name="FondoPueblo" type="Sprite2D" parent="." unique_id=811876738]
+texture = ExtResource("1_ydkxs")
+
+[node name="Jugador" parent="." unique_id=789816795 instance=ExtResource("2_p55p8")]
+position = Vector2(6, 125)
+
+[node name="EntradaCasa" type="Area2D" parent="." unique_id=1961821117]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntradaCasa" unique_id=112185394]
+position = Vector2(8.5, 108)
+shape = SubResource("RectangleShape2D_paa24")
+
+[node name="CascadaAnimada" type="AnimatedSprite2D" parent="." unique_id=200328517]
+material = SubResource("ShaderMaterial_paa24")
+position = Vector2(31, -226)
+sprite_frames = SubResource("SpriteFrames_paa24")
+autoplay = "default"
+
+[node name="AguaLago" type="Sprite2D" parent="." unique_id=1355773246]
+z_index = -1
+material = SubResource("ShaderMaterial_bgxm4")
+position = Vector2(61, -96)
+scale = Vector2(0.34, 0.34)
+texture = ExtResource("7_rb4qe")
+
+[node name="ColisionLago" type="StaticBody2D" parent="." unique_id=1770083874]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColisionLago" unique_id=1361006779]
+position = Vector2(18, -80.5)
+scale = Vector2(60, 60)
+shape = SubResource("RectangleShape2D_5cwap")
+
+[node name="PokemonGuardian" type="CharacterBody2D" parent="." unique_id=307964457]
+position = Vector2(100, 1)
+script = ExtResource("8_0gfcp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PokemonGuardian" unique_id=1338633182]
+position = Vector2(102, 45)
+scale = Vector2(0.49, 0.49)
+sprite_frames = SubResource("SpriteFrames_rb4qe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PokemonGuardian" unique_id=823192799]
+position = Vector2(103, 44)
+shape = SubResource("RectangleShape2D_cwtho")
+
+[node name="Detectorjugador" type="Area2D" parent="PokemonGuardian" unique_id=958757716]
+position = Vector2(101, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PokemonGuardian/Detectorjugador" unique_id=428293071]
+shape = SubResource("CircleShape2D_paa24")
+
+[connection signal="body_entered" from="EntradaCasa" to="." method="_on_entrada_casa_body_entered"]
+[connection signal="body_entered" from="PokemonGuardian/Detectorjugador" to="PokemonGuardian" method="_on_detectorjugador_body_entered"]
+[connection signal="body_exited" from="PokemonGuardian/Detectorjugador" to="PokemonGuardian" method="_on_detectorjugador_body_exited"]
